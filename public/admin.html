@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Administrativo — Kashevi Barbershop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a href="index.html" class="brand-logo">
+          <span class="brand-logo__main">KASHEVI</span>
+          <span class="brand-logo__sub">ADMINISTRACIÓN</span>
+        </a>
+
+        <div class="admin-header-actions">
+          <span class="admin-user-pill" id="admin-user-badge" hidden></span>
+          <a href="index.html" class="btn-sm">← Ver sitio público</a>
+          <button type="button" class="btn-sm" id="admin-logout-btn" hidden>
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container admin-main">
+      <!-- SOLO LOGIN VISIBLE AL INICIO -->
+      <section class="admin-card admin-login-box" id="admin-login-section">
+        <h1>Acceso Administrativo</h1>
+        <p>Inicia sesión con tu usuario y contraseña para ingresar al panel de Kashevi Barbershop.</p>
+
+        <form id="admin-login-form" class="admin-form-stack">
+          <div class="field-group">
+            <label class="field-label" for="login-usuario">Usuario</label>
+            <input
+              class="field-control"
+              type="text"
+              id="login-usuario"
+              placeholder="Ej. admin"
+              autocomplete="username"
+              required
+            />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="login-password">Contraseña</label>
+            <input
+              class="field-control"
+              type="password"
+              id="login-password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          <div class="agenda-status" id="login-status" aria-live="polite"></div>
+          <button type="submit" class="btn-pill-gold" id="login-submit-btn">Ingresar al panel</button>
+        </form>
+      </section>
+
+      <!-- DASHBOARD PROTEGIDO (OCULTO HASTA AUTENTICAR) -->
+      <section class="admin-stack" id="admin-dashboard-section" hidden>
+        <nav class="admin-tabs" aria-label="Secciones administrativas">
+          <button type="button" class="admin-tab is-active" data-tab="citas-generales">Citas Generales</button>
+          <button type="button" class="admin-tab" data-tab="citas-hoy">Citas de Hoy</button>
+          <button type="button" class="admin-tab" data-tab="bloqueos">Bloqueos de Horario</button>
+          <button type="button" class="admin-tab" data-tab="catalogo">Servicios y Equipo</button>
+          <button type="button" class="admin-tab" data-tab="testimonios">Testimonios</button>
+          <button type="button" class="admin-tab" data-tab="usuarios">Administradores</button>
+        </nav>
+
+        <!-- TAB 1: CITAS GENERALES -->
+        <div class="admin-stack" data-panel="citas-generales">
+          <div class="admin-kpis">
+            <div class="kpi-card">
+              <span class="kpi-card__label">Total</span>
+              <span class="kpi-card__value" id="kpi-total">0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-card__label">Pendientes</span>
+              <span class="kpi-card__value" id="kpi-pendiente">0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-card__label">Confirmadas</span>
+              <span class="kpi-card__value" id="kpi-confirmada">0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-card__label">Completadas</span>
+              <span class="kpi-card__value" id="kpi-completada">0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-card__label">Canceladas</span>
+              <span class="kpi-card__value" id="kpi-cancelada">0</span>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-filters">
+              <div class="field-group">
+                <label class="field-label" for="filtro-fecha">Fecha</label>
+                <input class="field-control" type="date" id="filtro-fecha" />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="filtro-estado">Estado</label>
+                <select class="field-control" id="filtro-estado">
+                  <option value="">Todos</option>
+                  <option value="pendiente">Pendiente</option>
+                  <option value="confirmada">Confirmada</option>
+                  <option value="completada">Completada</option>
+                  <option value="cancelada">Cancelada</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="filtro-barbero">Barbero</label>
+                <select class="field-control" id="filtro-barbero">
+                  <option value="">Todos los talentos</option>
+                </select>
+              </div>
+              <button type="button" class="btn-sm btn-sm--gold" id="btn-filtrar">Filtrar</button>
+              <button type="button" class="btn-sm" id="btn-ver-todas">Limpiar filtros</button>
+              <button type="button" class="btn-sm" id="btn-open-nueva-cita">+ Nueva cita</button>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__head">
+              <h2>Todas las Citas Registradas</h2>
+            </div>
+            <div class="agenda-status" id="citas-status" aria-live="polite"></div>
+            <div class="table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Fecha / Hora</th>
+                    <th>Cliente</th>
+                    <th>Servicio</th>
+                    <th>Barbero</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="citas-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: CITAS DE HOY -->
+        <div class="admin-stack" data-panel="citas-hoy" hidden>
+          <div class="admin-kpis">
+            <div class="kpi-card">
+              <span class="kpi-card__label">Total Hoy</span>
+              <span class="kpi-card__value" id="hoy-kpi-total">0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-card__label">Pendientes</span>
+              <span class="kpi-card__value" id="hoy-kpi-pendiente">0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-card__label">Confirmadas</span>
+              <span class="kpi-card__value" id="hoy-kpi-confirmada">0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-card__label">Completadas</span>
+              <span class="kpi-card__value" id="hoy-kpi-completada">0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-card__label">Canceladas</span>
+              <span class="kpi-card__value" id="hoy-kpi-cancelada">0</span>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__head">
+              <h2 id="citas-hoy-titulo">Agenda de Hoy</h2>
+              <div class="admin-header-actions">
+                <select class="estado-select" id="hoy-filtro-barbero" aria-label="Filtrar hoy por barbero">
+                  <option value="">Todos los talentos</option>
+                </select>
+                <button type="button" class="btn-sm" id="btn-hoy-refrescar">Actualizar</button>
+                <button type="button" class="btn-sm btn-sm--gold" id="btn-hoy-nueva-cita">+ Nueva cita</button>
+              </div>
+            </div>
+            <div class="agenda-status" id="citas-hoy-status" aria-live="polite"></div>
+            <div class="table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Hora</th>
+                    <th>Cliente</th>
+                    <th>Servicio</th>
+                    <th>Barbero</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="citas-hoy-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: BLOQUEOS -->
+        <div class="admin-split" data-panel="bloqueos" hidden>
+          <div class="admin-card">
+            <div class="admin-card__head">
+              <h2>Bloquear Horario</h2>
+            </div>
+            <form id="bloqueo-form" class="admin-form-stack">
+              <div class="field-group">
+                <label class="field-label" for="bloqueo-barbero">Alcance</label>
+                <select class="field-control" id="bloqueo-barbero">
+                  <option value="">Todo el estudio (cierre general)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="bloqueo-fecha">Fecha</label>
+                <input class="field-control" type="date" id="bloqueo-fecha" required />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="bloqueo-inicio">Hora inicio</label>
+                <input class="field-control" type="time" id="bloqueo-inicio" value="13:00" required />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="bloqueo-fin">Hora fin</label>
+                <input class="field-control" type="time" id="bloqueo-fin" value="14:00" required />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="bloqueo-motivo">Motivo</label>
+                <input
+                  class="field-control"
+                  type="text"
+                  id="bloqueo-motivo"
+                  placeholder="Ej. Almuerzo, feriado, capacitación"
+                  required
+                />
+              </div>
+              <div class="agenda-status" id="bloqueo-status" aria-live="polite"></div>
+              <button type="submit" class="btn-sm btn-sm--gold">Guardar bloqueo</button>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__head">
+              <h2>Bloqueos Activos</h2>
+            </div>
+            <div class="admin-list" id="bloqueos-list"></div>
+          </div>
+        </div>
+
+        <!-- TAB 3: SERVICIOS Y EQUIPO -->
+        <div class="admin-stack" data-panel="catalogo" hidden>
+          <div class="admin-card">
+            <div class="admin-card__head">
+              <h2>Catálogo de Servicios</h2>
+            </div>
+            <div class="agenda-status" id="servicios-admin-status" aria-live="polite"></div>
+            <div class="admin-list" id="servicios-admin-list"></div>
+          </div>
+
+          <div class="admin-split">
+            <div class="admin-card">
+              <div class="admin-card__head">
+                <h2>Agregar Barbero</h2>
+              </div>
+              <form id="barbero-form" class="admin-form-stack">
+                <div class="field-group">
+                  <label class="field-label" for="barbero-nombre">Nombre</label>
+                  <input class="field-control" type="text" id="barbero-nombre" required />
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="barbero-especialidad">Especialidad</label>
+                  <input class="field-control" type="text" id="barbero-especialidad" required />
+                </div>
+                <div class="agenda-status" id="barbero-status" aria-live="polite"></div>
+                <button type="submit" class="btn-sm btn-sm--gold">Guardar barbero</button>
+              </form>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card__head">
+                <h2>Equipo del Estudio</h2>
+              </div>
+              <div class="admin-list" id="barberos-admin-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: TESTIMONIOS -->
+        <div class="admin-split" data-panel="testimonios" hidden>
+          <div class="admin-card">
+            <div class="admin-card__head">
+              <h2>Agregar Testimonio</h2>
+            </div>
+            <form id="testimonio-form" class="admin-form-stack">
+              <div class="field-group">
+                <label class="field-label" for="testimonio-nombre">Nombre del cliente</label>
+                <input class="field-control" type="text" id="testimonio-nombre" required />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="testimonio-edad">Edad</label>
+                <input class="field-control" type="number" id="testimonio-edad" min="15" max="99" required />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="testimonio-comentario">Comentario</label>
+                <input class="field-control" type="text" id="testimonio-comentario" maxlength="255" required />
+              </div>
+              <div class="agenda-status" id="testimonio-status" aria-live="polite"></div>
+              <button type="submit" class="btn-sm btn-sm--gold">Publicar testimonio</button>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__head">
+              <h2>Reseñas Registradas</h2>
+            </div>
+            <div class="admin-list" id="testimonios-admin-list"></div>
+          </div>
+        </div>
+
+        <!-- TAB 5: ADMINISTRADORES -->
+        <div class="admin-split" data-panel="usuarios" hidden>
+          <div class="admin-stack">
+            <div class="admin-card">
+              <div class="admin-card__head">
+                <h2>Registrar Nuevo Administrador</h2>
+              </div>
+              <form id="nuevo-admin-form" class="admin-form-stack">
+                <div class="field-group">
+                  <label class="field-label" for="new-admin-nombre">Nombre completo</label>
+                  <input class="field-control" type="text" id="new-admin-nombre" required />
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="new-admin-usuario">Usuario</label>
+                  <input class="field-control" type="text" id="new-admin-usuario" required />
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="new-admin-password">Contraseña (mín. 6)</label>
+                  <input class="field-control" type="password" id="new-admin-password" minlength="6" required />
+                </div>
+                <div class="agenda-status" id="nuevo-admin-status" aria-live="polite"></div>
+                <button type="submit" class="btn-sm btn-sm--gold">Crear administrador</button>
+              </form>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card__head">
+                <h2>Cambiar Mi Contraseña</h2>
+              </div>
+              <form id="password-form" class="admin-form-stack">
+                <div class="field-group">
+                  <label class="field-label" for="pwd-actual">Contraseña actual</label>
+                  <input class="field-control" type="password" id="pwd-actual" required />
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="pwd-nueva">Nueva contraseña</label>
+                  <input class="field-control" type="password" id="pwd-nueva" minlength="6" required />
+                </div>
+                <div class="agenda-status" id="password-status" aria-live="polite"></div>
+                <button type="submit" class="btn-sm">Actualizar contraseña</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__head">
+              <h2>Usuarios con Acceso</h2>
+            </div>
+            <div class="admin-list" id="usuarios-admin-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL NUEVA CITA MANUAL -->
+    <div class="modal-backdrop" id="nueva-cita-modal" role="dialog" aria-modal="true" hidden>
+      <div class="modal-dialog">
+        <div class="modal-dialog__body">
+          <div class="admin-card__head">
+            <h3 class="modal-dialog__title" style="margin: 0">Registrar Cita Manual</h3>
+            <button type="button" class="btn-sm" id="cerrar-nueva-cita-modal" aria-label="Cerrar modal">✕</button>
+          </div>
+          <form id="nueva-cita-form" class="admin-form-grid">
+            <div class="field-group field-group--full">
+              <label class="field-label" for="manual-servicio">Servicio</label>
+              <select class="field-control" id="manual-servicio" required></select>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="manual-fecha">Fecha</label>
+              <input class="field-control" type="date" id="manual-fecha" required />
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="manual-hora">Hora disponible</label>
+              <select class="field-control" id="manual-hora" required></select>
+            </div>
+            <div class="field-group field-group--full">
+              <label class="field-label" for="manual-barbero">Barbero</label>
+              <select class="field-control" id="manual-barbero">
+                <option value="">Asignación automática</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="manual-nombre">Nombre del cliente</label>
+              <input class="field-control" type="text" id="manual-nombre" required />
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="manual-telefono">Teléfono / WhatsApp</label>
+              <input class="field-control" type="tel" id="manual-telefono" placeholder="Ej. 907550557" required />
+            </div>
+            <div class="agenda-status field-group--full" id="manual-cita-status" aria-live="polite"></div>
+            <div class="field-group--full" style="display: flex; justify-content: flex-end; gap: 0.75rem">
+              <button type="button" class="btn-sm" id="cancelar-nueva-cita-modal">Cancelar</button>
+              <button type="submit" class="btn-pill-gold">Guardar cita</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/admin.js"></script>
+  </body>
+</html>

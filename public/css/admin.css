@@ -1,0 +1,322 @@
+[hidden] {
+  display: none !important;
+}
+
+.admin-main {
+  padding-block: 2.5rem 4rem;
+  min-height: calc(100vh - 76px);
+}
+
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.admin-user-pill {
+  font-size: 0.82rem;
+  color: var(--gold-cream);
+  border: 1px solid rgba(240, 232, 161, 0.35);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.85rem;
+}
+
+.admin-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.admin-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.admin-card__head h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.admin-login-box {
+  width: min(100%, 440px);
+  margin: 4rem auto;
+  border-color: rgba(240, 232, 161, 0.35);
+}
+
+.admin-login-box h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.4rem;
+  color: var(--gold-cream);
+}
+
+.admin-login-box p {
+  margin: 0 0 1.4rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.admin-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+}
+
+.admin-tab {
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.admin-tab:hover {
+  color: var(--text-white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.admin-tab.is-active {
+  background: var(--gold-cream);
+  border-color: var(--gold-cream);
+  color: var(--gold-ink);
+}
+
+.admin-kpis {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+}
+
+.kpi-card__label {
+  display: block;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.kpi-card__value {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--gold-cream);
+}
+
+.admin-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: flex-end;
+}
+
+.admin-filters .field-group {
+  min-width: 170px;
+  flex: 1;
+}
+
+.btn-sm {
+  height: 44px;
+  padding: 0 1.15rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+
+.btn-sm:hover {
+  border-color: var(--gold-cream);
+  color: var(--gold-cream);
+}
+
+.btn-sm--gold {
+  background: var(--gold-cream);
+  border-color: var(--gold-cream);
+  color: var(--gold-ink);
+}
+
+.btn-sm--gold:hover {
+  background: var(--gold-cream-hover);
+  color: var(--gold-ink);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 0.85rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.admin-table th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-subtle);
+}
+
+.estado-badge {
+  display: inline-block;
+  padding: 0.24rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.estado-pendiente {
+  background: rgba(240, 232, 161, 0.16);
+  color: var(--gold-cream);
+}
+
+.estado-confirmada {
+  background: rgba(92, 214, 141, 0.16);
+  color: var(--status-success);
+}
+
+.estado-completada {
+  background: rgba(120, 175, 255, 0.16);
+  color: #8cc2ff;
+}
+
+.estado-cancelada {
+  background: rgba(255, 107, 107, 0.16);
+  color: var(--status-error);
+}
+
+.estado-select,
+.inline-input {
+  background: var(--bg-black);
+  color: var(--text-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 0.42rem 0.6rem;
+  font-size: 0.84rem;
+}
+
+.inline-input--sm {
+  width: 96px;
+}
+
+.admin-split {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.admin-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.95rem 1rem;
+}
+
+.admin-form-grid .field-group--full {
+  grid-column: 1 / -1;
+}
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.btn-danger-sm {
+  padding: 0.38rem 0.78rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 107, 107, 0.45);
+  background: transparent;
+  color: var(--status-error);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.btn-danger-sm:hover {
+  background: rgba(255, 107, 107, 0.14);
+}
+
+.service-edit-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.7fr 0.7fr auto auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 980px) {
+  .admin-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admin-split,
+  .service-edit-card,
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

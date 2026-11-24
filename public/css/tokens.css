@@ -1,0 +1,32 @@
+:root {
+  /* Paleta Kashevi Barbershop (fiel al mockup PDF) */
+  --bg-black: #000000;
+  --bg-elevated: #0b0b0b;
+  --bg-card: #121212;
+  --gold-cream: #f0e8a1;
+  --gold-cream-hover: #f7f1ba;
+  --gold-olive: #5d531f;
+  --gold-ink: #3c3411;
+
+  --text-white: #ffffff;
+  --text-muted: #bdbdbd;
+  --text-subtle: #888888;
+  --border-light: rgba(255, 255, 255, 0.85);
+  --border-subtle: rgba(255, 255, 255, 0.14);
+
+  --status-success: #5cd68d;
+  --status-error: #ff6b6b;
+  --status-warning: #f0e8a1;
+
+  /* Tipografías */
+  --font-sans: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+
+  /* Radios y espaciado */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --container-max: 1180px;
+  --transition: 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}

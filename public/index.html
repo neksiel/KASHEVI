@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kashevi Barbershop — Sistema de Citas y Estudio</title>
+    <meta
+      name="description"
+      content="Kashevi Barbershop: cortes a medida, tinte, tratamientos faciales y diseño de barba. Reserva tu cita en línea y confirma por WhatsApp."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a href="#inicio" class="brand-logo" aria-label="Kashevi Barbershop Inicio">
+          <span class="brand-logo__main">KASHEVI</span>
+          <span class="brand-logo__sub">BARBERSHOP</span>
+        </a>
+
+        <button
+          type="button"
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Abrir menú de navegación"
+        >
+          ☰
+        </button>
+
+        <nav aria-label="Navegación principal">
+          <ul class="nav-links" id="nav-menu">
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#ritual">Ritual</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- SECCIÓN 1: HERO -->
+      <section class="hero" id="inicio">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__content">
+          <h1 class="hero__title">
+            <span class="hero__line-1">Transformemos</span>
+            <span class="hero__line-2">tu cabello</span>
+          </h1>
+          <div class="hero__cta-wrap">
+            <a href="#agenda" class="btn-pill-gold">Reservar cita</a>
+            <a href="#servicios" class="btn-ghost">Ver servicios</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: NOSOTROS -->
+      <section class="section" id="nosotros">
+        <div class="container nosotros-grid">
+          <div class="nosotros-photo-frame">
+            <img
+              src="img/nosotros-barber.jpg"
+              alt="Barbero de Kashevi Barbershop realizando un corte de precisión"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="nosotros-card">
+            <p class="nosotros-card__eyebrow">Nosotros</p>
+            <h2 class="nosotros-card__brand">
+              <strong>KASHEVI</strong>
+              <span>BARBERSHOP</span>
+            </h2>
+            <p>
+              Para nosotros, cada cabello es un lienzo en blanco. Lo que inició
+              como una visión compartida, hoy es un estudio donde cuatro
+              talentos se unen para expresarse a través de cortes, color y
+              formas con personalidad propia.
+            </p>
+            <p>
+              Nos dedicamos a entender quién eres para diseñar un look a tu
+              medida que conecte con tu energía. Más allá de transformar tu
+              imagen, creamos un estilo que resalta tu mejor versión.
+            </p>
+
+            <div class="talentos-strip">
+              <span class="talentos-strip__label">Nuestros 4 talentos</span>
+              <div class="talentos-pills" id="barberos-strip">
+                <span class="talento-pill">Cargando equipo...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: SERVICIOS -->
+      <section class="section servicios-section" id="servicios">
+        <div class="container">
+          <div class="servicios-grid" id="servicios-grid">
+            <p class="agenda-status">Cargando servicios...</p>
+          </div>
+          <h2 class="servicios-banner-title">SERVICIOS</h2>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: RITUAL -->
+      <section class="section" id="ritual">
+        <div class="container">
+          <div class="ritual-grid">
+            <article class="ritual-step">
+              <div class="ritual-step__media">
+                <img
+                  src="img/ritual-1-diagnostico.jpg"
+                  alt="Diagnóstico y consulta personalizada"
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="ritual-step__title">Diagnóstico y Consulta</h3>
+              <p class="ritual-step__desc">
+                Analizamos la textura, forma y salud de tu barba y cabello para
+                diseñar el corte que mejor se adapte a tus facciones y estilo
+                personal.
+              </p>
+            </article>
+
+            <article class="ritual-step">
+              <div class="ritual-step__media">
+                <img
+                  src="img/ritual-2-corte.jpg"
+                  alt="Corte a medida y estilismo"
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="ritual-step__title">Corte a Medida y Estilismo</h3>
+              <p class="ritual-step__desc">
+                Ejecutamos con precisión tu transformación, ya sea un fade
+                moderno, un corte a tijera clásico o un perfilado de barba,
+                siempre cuidando cada detalle.
+              </p>
+            </article>
+
+            <article class="ritual-step">
+              <div class="ritual-step__media">
+                <img
+                  src="img/ritual-3-productos.jpg"
+                  alt="Productos especializados para el cuidado masculino"
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="ritual-step__title">Productos Especializados</h3>
+              <p class="ritual-step__desc">
+                Seleccionamos solo aceites, ceras, pomadas y champús de alta
+                gama formulados específicamente para el cuidado y peinado del
+                hombre moderno.
+              </p>
+            </article>
+
+            <article class="ritual-step">
+              <div class="ritual-step__media">
+                <img
+                  src="img/ritual-4-mantenimiento.jpg"
+                  alt="Consejos de mantenimiento en casa"
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="ritual-step__title">Consejos de Mantenimiento</h3>
+              <p class="ritual-step__desc">
+                Te enseñamos cómo mantener tu look impecable en casa: técnicas
+                de peinado, frecuencia de lavado y consejos de afeitado para
+                prolongar el acabado de la barbería.
+              </p>
+            </article>
+          </div>
+
+          <div class="ritual-wordmark" aria-hidden="true">
+            <span>R</span>
+            <span>I</span>
+            <span>T</span>
+            <span>U</span>
+            <span>A</span>
+            <span>L</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 5: TESTIMONIOS -->
+      <section class="section" id="testimonios">
+        <div class="container">
+          <h2 class="section-display-title">NUESTRA PRIORIDAD</h2>
+          <div class="testimonios-carousel" id="testimonios-carousel">
+            <p class="agenda-status">Cargando testimonios...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 6: UBICACIÓN, HORARIOS Y CTA -->
+      <section class="section mirror-cta" id="ubicacion">
+        <div class="container">
+          <div class="mirror-info-row">
+            <div class="mirror-info-item">
+              <span class="gold-dot" aria-hidden="true"></span>
+              <div>
+                LUNES A SÁBADOS<br />
+                DE 9:00 A 22:00
+              </div>
+            </div>
+
+            <div class="mirror-tools-photo">
+              <img
+                src="img/cta-herramientas.jpg"
+                alt="Brocha, tónico y herramientas clásicas de barbería"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="mirror-info-item">
+              <span class="gold-dot" aria-hidden="true"></span>
+              <div>
+                CALLE CUALQUIERA #123,<br />
+                CUALQUIER LUGAR
+              </div>
+            </div>
+          </div>
+
+          <h2 class="mirror-headline">
+            ¿NOS VEMOS<br />FRENTE AL ESPEJO?
+          </h2>
+
+          <a href="#agenda" class="btn-pill-gold">RESERVAR CITA</a>
+
+          <div class="mirror-meta">
+            <span>@KASHEVIBARBERSHOP</span>
+            <a
+              id="ubicacion-whatsapp-link"
+              href="https://wa.me/51907550557"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              907 550 557
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 7: AGENDA Y RESERVA -->
+      <section class="section" id="agenda">
+        <div class="container agenda-layout">
+          <div class="agenda-artwork">
+            <div class="agenda-artwork__mask">
+              <img
+                src="img/agenda-barber-bw.jpg"
+                alt="Maestro barbero atendiendo a un cliente"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="agenda-form-panel">
+            <h2 class="agenda-heading">Agenda tu cita</h2>
+            <p class="agenda-subheading">
+              Atención de lunes a sábado (09:00 a 22:00). Consulta horarios reales y confirma por WhatsApp.
+            </p>
+
+            <form class="agenda-form" id="agenda-form" novalidate>
+              <div class="field-group field-group--full">
+                <label class="field-label" for="agenda-servicio">Servicio</label>
+                <select class="field-control" id="agenda-servicio" name="servicio_id" required>
+                  <option value="">Selecciona un servicio...</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="agenda-fecha">Fecha</label>
+                <input
+                  class="field-control"
+                  type="date"
+                  id="agenda-fecha"
+                  name="fecha"
+                  required
+                />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="agenda-hora">Hora preferida</label>
+                <select class="field-control" id="agenda-hora" name="hora_inicio" required disabled>
+                  <option value="">Elige fecha y servicio</option>
+                </select>
+              </div>
+
+              <div class="field-group field-group--full">
+                <label class="field-label" for="agenda-barbero">
+                  Barbero (opcional)
+                </label>
+                <select class="field-control" id="agenda-barbero" name="barbero_id">
+                  <option value="">Cualquier talento disponible (asignación automática)</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="agenda-nombre">Nombre del cliente</label>
+                <input
+                  class="field-control"
+                  type="text"
+                  id="agenda-nombre"
+                  name="cliente_nombre"
+                  placeholder="Tu nombre completo"
+                  minlength="2"
+                  maxlength="120"
+                  required
+                />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="agenda-telefono">Teléfono / WhatsApp</label>
+                <input
+                  class="field-control"
+                  type="tel"
+                  id="agenda-telefono"
+                  name="cliente_telefono"
+                  placeholder="Ej. 907550557"
+                  inputmode="numeric"
+                  required
+                />
+              </div>
+
+              <div class="agenda-status" id="agenda-status" aria-live="polite"></div>
+
+              <div class="agenda-submit-wrap">
+                <button type="submit" class="btn-outline-submit" id="agenda-submit">
+                  Confirmación<br />por WhatsApp
+                </button>
+              </div>
+            </form>
+
+            <div class="booking-confirmation" id="agenda-confirmacion" hidden></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL + DETALLES -->
+    <div
+      class="modal-backdrop"
+      id="servicio-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-servicio-titulo"
+      hidden
+    >
+      <div class="modal-dialog">
+        <div class="modal-dialog__media">
+          <img id="modal-servicio-img" src="" alt="" />
+          <button
+            type="button"
+            class="modal-close"
+            id="modal-close"
+            aria-label="Cerrar detalle de servicio"
+          >
+            ✕
+          </button>
+        </div>
+        <div class="modal-dialog__body">
+          <h3 class="modal-dialog__title" id="modal-servicio-titulo"></h3>
+          <div class="modal-dialog__badges">
+            <span class="modal-badge" id="modal-servicio-duracion"></span>
+            <span class="modal-badge" id="modal-servicio-precio"></span>
+          </div>
+          <p class="modal-dialog__desc" id="modal-servicio-desc"></p>
+          <button type="button" class="btn-pill-gold" id="modal-reservar-btn">
+            Agendar este servicio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 Kashevi Barbershop — Todos los derechos reservados.</span>
+        <a href="admin.html" class="footer-admin-link">Panel Administrativo</a>
+      </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/agenda.js"></script>
+  </body>
+</html>
